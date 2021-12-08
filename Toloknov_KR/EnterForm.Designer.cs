@@ -36,7 +36,7 @@ namespace Toloknov_KR
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(156, 158);
+            this.button1.Location = new System.Drawing.Point(117, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 52);
             this.button1.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace Toloknov_KR
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(156, 83);
+            this.button2.Location = new System.Drawing.Point(117, 67);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(169, 52);
             this.button2.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace Toloknov_KR
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(397, 333);
+            this.button3.Location = new System.Drawing.Point(317, 259);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 30);
             this.button3.TabIndex = 2;
@@ -68,12 +68,14 @@ namespace Toloknov_KR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 375);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(431, 301);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "EnterForm";
             this.Text = "Вход";
+            this.Load += new System.EventHandler(this.EnterForm_Load);
             this.ResumeLayout(false);
 
         }

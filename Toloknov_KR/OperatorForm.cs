@@ -19,7 +19,21 @@ namespace Toloknov_KR
         public OperatorForm()
         {
             InitializeComponent();
+            //InitializeTimePicker();
         }
+
+        //private DateTimePicker timePicker;
+
+        //private void InitializeTimePicker()
+        //{
+        //    timePicker = new DateTimePicker();
+        //    timePicker.Format = DateTimePickerFormat.Time;
+        //    timePicker.ShowUpDown = true;
+        //    timePicker.Location = new Point(10, 10);
+        //    timePicker.Width = 100;
+        //    Controls.Add(timePicker);
+           
+        //}
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -34,7 +48,7 @@ namespace Toloknov_KR
             newEnterForm.Show();
         }
 
-        private void OperatorForm_Load(object sender, EventArgs e)
+        void o()
         {
             string connectionString = (conStr);
             string sql = "SELECT * FROM Problem";
@@ -46,6 +60,28 @@ namespace Toloknov_KR
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
             }
+        }
+        private void OperatorForm_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point(300,250);
+            o();
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string connectionString = (conStr);
+            string sqlExpression = "INSERT INTO Problem (TimeProblem, AdressProblem, CauseProblem,ExitGroup) VALUES ('"+tbTimeProblem.Text+"','"+tbAdressProblem.Text + "','"+tbCauseProblem.Text+ "','"+tbExitGroup.Text+"')";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                int number = command.ExecuteNonQuery();
+                
+            }
+
+            o();
         }
     }
 }

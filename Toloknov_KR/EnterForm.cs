@@ -35,5 +35,10 @@ namespace Toloknov_KR
         {
             Application.Exit();
         }
+
+        private void EnterForm_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point(500, 250);
+        }
     }
 }

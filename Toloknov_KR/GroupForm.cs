@@ -21,6 +21,7 @@ namespace Toloknov_KR
 
         private void GroupForm_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(500, 250);
             string connectionString = (conStr);
             string sql = "SELECT * FROM Problem";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -31,6 +32,38 @@ namespace Toloknov_KR
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            EnterForm newEnterForm = new EnterForm();
+            newEnterForm.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        int click;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            click = dataGridView1.CurrentCell.RowIndex;
+            string a = dataGridView1.Rows[click].Cells[0].Value.ToString();
+            textBox1.Text = a;
+
+            string b = dataGridView1.Rows[click].Cells[4].Value.ToString();
+            textBox2.Text = b;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
