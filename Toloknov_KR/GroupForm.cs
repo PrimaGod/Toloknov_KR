@@ -51,11 +51,12 @@ namespace Toloknov_KR
 
         }
         int click;
+        string a;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             click = dataGridView1.CurrentCell.RowIndex;
-            string a = dataGridView1.Rows[click].Cells[0].Value.ToString();
-            textBox1.Text = a;
+            a = dataGridView1.Rows[click].Cells[0].Value.ToString();
+            tbid.Text = a;
 
             string b = dataGridView1.Rows[click].Cells[4].Value.ToString();
             textBox2.Text = b;
@@ -63,7 +64,36 @@ namespace Toloknov_KR
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            string connectionString = (conStr);
+            string sqlExpression = "UPDATE Problem SET TimeAccept = GETDATE() WHERE id_problem = "+ a +"";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                int number = command.ExecuteNonQuery();
+
+            }
+            o();
+
+      
+       }
+
+        void o()
+        {
+            string connectionString = (conStr);
+            string sql = "SELECT * FROM Problem";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+            }
         }
+
+
+
     }
+
 }
